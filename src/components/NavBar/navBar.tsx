@@ -20,3 +20,12 @@ const NavBar: FC = () => {
 };
 
 export default NavBar;
+
+//! IF YOU WANT TO WORK ON NAVBAR, CREATE A NEW BRANCH AND WORK ON IT THERE
+//! the branch feat/router should JUST be for that
+//! branch early, branch frequently
+
+// home -> /posts
+// /posts/:id
+// /posts/:id/edit
+// /posts/new -> create new post -> /posts/:id -> /posts/:id/edit
