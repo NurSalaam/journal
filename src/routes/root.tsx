@@ -1,10 +1,12 @@
 import React, { FC } from "react";
 import NavBar from "../components/NavBar";
+import { Outlet } from "react-router-dom";
 
 const Root: FC = () => {
   return (
     <>
       <NavBar />
+      <Outlet />
     </>
   );
 };

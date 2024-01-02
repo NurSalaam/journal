@@ -5,7 +5,7 @@ type PostItemProps = {
   post: Post;
 };
 
-const PostItem: React.FC<PostItemProps> = ({ post }) => {
+const PostListItem: React.FC<PostItemProps> = ({ post }) => {
   return (
     <>
       <h1>{post.title}</h1>
@@ -18,4 +18,4 @@ const PostItem: React.FC<PostItemProps> = ({ post }) => {
   );
 };
 
-export default PostItem;
+export default PostListItem;

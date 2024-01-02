@@ -1,6 +1,6 @@
 import React from "react";
-import Post, { POST_STATUS } from "../../../types/Post";
-import PostItem from "./PostListItem";
+import Post from "../../../types/Post";
+import PostListItem from "./PostListItem";
 
 type PostListProps = {
   posts: Post[];
@@ -11,10 +11,10 @@ const PostList: React.FC<PostListProps> = ({ posts }) => {
     <>
       {posts.map((post) => {
         return (
-          <>
-            <PostItem key={post.id} post={post} />
+          <div key={post.id}>
+            <PostListItem post={post} />
             <hr></hr>
-          </>
+          </div>
         );
       })}
     </>
