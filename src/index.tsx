@@ -6,19 +6,31 @@ import DefaultErrorPage from "./components/Error/default-error-page";
 import Post, { loader as postLoader } from "./routes/post";
 import Home, { loader as homeLoader } from "./routes/posts";
 
+const paths = {
+  root: {
+    path: "/",
+    home: {
+      path: "home",
+    },
+    post: {
+      path: "post/:postId",
+    },
+  },
+};
+
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: paths.root.path,
     element: <Root />,
     errorElement: <DefaultErrorPage />,
     children: [
       {
-        path: "home",
+        path: paths.root.home.path,
         element: <Home />,
         loader: homeLoader,
       },
       {
-        path: "post/:postId",
+        path: paths.root.post.path,
         element: <Post />,
         loader: postLoader,
       },
