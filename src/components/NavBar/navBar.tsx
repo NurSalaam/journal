@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { useLocation } from "react-router-dom";
 import "./navBar.css";
 
 const NavBar: FC = () => {
@@ -10,6 +11,7 @@ const NavBar: FC = () => {
       <p id="nav-title">Nur's Notebook</p>
       <div id="post-actions">
         <div className="multi-btn-container">
+          <button className="btn-primary">Add Post</button>
           <button>Draft</button>
           <button>Posted</button>
         </div>
