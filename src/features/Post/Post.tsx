@@ -3,8 +3,11 @@ import PostType, { POST_STATUS } from "../../types/Post";
 import { convertToPost } from "../../utils/convert-to-post";
 import { mockPosts } from "../../mocks/mock-posts";
 
-const Post: React.FC = () => {
-  const post: PostType = convertToPost(mockPosts)[0];
+type PostProps = {
+  post: PostType;
+};
+
+const Post: React.FC<PostProps> = ({ post }) => {
   return (
     <div>
       <h1>{post.title}</h1>

@@ -1,15 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./routes/root";
 import DefaultErrorPage from "./components/Error/default-error-page";
-import PostList from "./features/PostList";
-import { convertToPost } from "./utils/convert-to-post";
-import { mockPosts } from "./mocks/mock-posts";
-import Post from "./features/Post";
+import Post, { loader as postLoader } from "./routes/post";
+import Home, { loader as homeLoader } from "./routes/posts";
 
-const posts = convertToPost(mockPosts);
 const router = createBrowserRouter([
   {
     path: "/",
@@ -18,11 +14,13 @@ const router = createBrowserRouter([
     children: [
       {
         path: "home",
-        element: <PostList posts={posts} />,
+        element: <Home />,
+        loader: homeLoader,
       },
       {
         path: "post/:postId",
         element: <Post />,
+        loader: postLoader,
       },
     ],
   },
