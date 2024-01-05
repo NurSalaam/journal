@@ -1,0 +1,52 @@
+.input-field-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px; /* This creates a gap between fields */
+  flex-direction: row-reverse;
+}
+
+.input-field-label {
+  padding-top: 1rem;
+  color: lightgray;
+  transition: color 0.3s ease; /* This adds a transition effect when the color changes */
+  font-weight: 300;
+  font-size: 1rem; /* Equivalent to 12pt */
+  font-family: "Roboto", sans-serif;
+  color: #999999;
+  margin-right: 2rem;
+}
+
+.input-field {
+  background-color: inherit;
+  width: 100%;
+  border: none;
+  border-radius: 7px;
+  padding: 1rem;
+  resize: none; /* This disables manual resizing */
+  outline: none; /* This removes the highlight when the textarea is selected */
+  transition: background-color 0.3s ease; /* This adds a transition effect when the background color changes */
+}
+
+.input-field:hover ~ .input-field-label {
+  color: black;
+}
+
+#title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 2rem; /* Equivalent to 24pt */
+  color: #333333;
+}
+
+#lead {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem; /* Equivalent to 16pt */
+  color: #666666;
+}
+
+#body {
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem; /* Equivalent to 12pt */
+}

@@ -1,27 +1,51 @@
-import React, { useContext } from "react";
+import React, { useContext, useReducer } from "react";
 import PostType, { POST_STATUS } from "../../types/Post";
 import { ViewingModeContext } from "../../contexts/viewingMode";
-
+import InputField from "./components/InputField";
+import {
+  postFormReducer,
+  postFormActionTypes,
+  PostFormState,
+} from "./PostFormReducer";
+import "./Post.css";
 type PostProps = {
   post: PostType;
 };
 
 const Post: React.FC<PostProps> = ({ post }) => {
-  const { state, dispatch } = useContext(ViewingModeContext);
+  // const { state, dispatch } = useContext(ViewingModeContext);
+  const initialState: PostFormState = {
+    title: post.title,
+    lead: post.lead,
+    body: post.body,
+  };
+  const [postState, dispatch] = useReducer(postFormReducer, initialState);
   return (
-    <div>
-      <p>{state.isPreview ? "Preview" : "Not Preview"}</p>
-      <p>{state.isDraft ? "Draft" : "Not Draft"}</p>
-      <h1>{post.title}</h1>
-      <h3>{post.lead}</h3>
-      <div>
-        <p>{post.created_at.toString()}</p>
-        {post.updated_at && <p>{post.updated_at.toString()}</p>}
-        {post.status === POST_STATUS.DRAFT && <p>Draft</p>}
-      </div>
-      <div>
-        <p>{post.body}</p>
-      </div>
+    <div className="post">
+      <InputField
+        id="title"
+        value={postState.title}
+        label="Title"
+        onChange={(e) =>
+          dispatch({ type: postFormActionTypes.TITLE, payload: e.target.value })
+        }
+      />
+      <InputField
+        id="lead"
+        value={postState.lead}
+        label="Lead"
+        onChange={(e) =>
+          dispatch({ type: postFormActionTypes.LEAD, payload: e.target.value })
+        }
+      />
+      <InputField
+        id="body"
+        value={postState.body}
+        label="Body"
+        onChange={(e) =>
+          dispatch({ type: postFormActionTypes.BODY, payload: e.target.value })
+        }
+      />
     </div>
   );
 };
