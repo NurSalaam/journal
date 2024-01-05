@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import PostType, { POST_STATUS } from "../../types/Post";
-import { convertToPost } from "../../utils/convert-to-post";
-import { mockPosts } from "../../mocks/mock-posts";
+import { ViewingModeContext } from "../../contexts/viewingMode";
 
 type PostProps = {
   post: PostType;
 };
 
 const Post: React.FC<PostProps> = ({ post }) => {
+  const { state, dispatch } = useContext(ViewingModeContext);
   return (
     <div>
+      <p>{state.isPreview ? "Preview" : "Not Preview"}</p>
+      <p>{state.isDraft ? "Draft" : "Not Draft"}</p>
       <h1>{post.title}</h1>
       <h3>{post.lead}</h3>
       <div>

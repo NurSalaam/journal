@@ -5,15 +5,16 @@ import Root from "./routes/root";
 import DefaultErrorPage from "./components/Error/default-error-page";
 import Post, { loader as postLoader } from "./routes/post";
 import Home, { loader as homeLoader } from "./routes/posts";
+import { ViewingModeProvider } from "./contexts/viewingMode";
 
-const paths = {
+export const paths = {
   root: {
     path: "/",
     home: {
-      path: "home",
+      path: "/home",
     },
     post: {
-      path: "post/:postId",
+      path: "/post/:postId",
     },
   },
 };
@@ -43,6 +44,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ViewingModeProvider>
+      <RouterProvider router={router} />
+    </ViewingModeProvider>
   </React.StrictMode>
 );

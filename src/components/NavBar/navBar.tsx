@@ -1,19 +1,47 @@
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import "./navBar.css";
+import { paths } from "../..";
+import { ViewingModeContext, actionTypes } from "../../contexts/viewingMode";
 
 const NavBar: FC = () => {
+  const location = useLocation();
+  const currentRoute = location.pathname;
+  const isHome = currentRoute === paths.root.home.path;
+  const isPost = currentRoute.startsWith(paths.root.post.path.split("/:")[0]);
+
+  const { state, dispatch } = useContext(ViewingModeContext);
+
+  const handleTogglePreview = () => {
+    dispatch({ type: actionTypes.TOGGLE_PREVIEW });
+  };
+  const handleToggleDraft = () => {
+    dispatch({ type: actionTypes.TOGGLE_DRAFT });
+  };
+
   return (
     <div id="nav-bar">
-      <button id="preview" className="btn-secondary">
-        Preview
-      </button>
+      {isPost && (
+        <button
+          id="preview"
+          className="btn-secondary"
+          onClick={handleTogglePreview}
+        >
+          {state.isPreview ? "Preview" : "Not Preview"}
+        </button>
+      )}
       <p id="nav-title">Nur's Notebook</p>
       <div id="post-actions">
         <div className="multi-btn-container">
-          <button className="btn-primary">Add Post</button>
-          <button>Draft</button>
-          <button>Posted</button>
+          {isHome && <button className="btn-primary">Add Post</button>}
+          {isPost && (
+            <>
+              <button onClick={handleToggleDraft}>
+                {state.isDraft ? "Draft" : "Not Draft"}
+              </button>
+              <button>Post</button>
+            </>
+          )}
         </div>
         <button id="btn-options">...</button>
       </div>
