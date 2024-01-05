@@ -9,6 +9,7 @@ type InputFieldProps = {
   label: string;
   className?: string;
   style?: React.CSSProperties;
+  hideLabel?: boolean;
 };
 
 const InputField: FC<InputFieldProps> = ({
@@ -16,8 +17,8 @@ const InputField: FC<InputFieldProps> = ({
   value,
   onChange,
   label,
-  className,
   style,
+  hideLabel,
 }) => {
   const [isScreenSmall, setIsScreenSmall] = useState(window.innerWidth < 600);
 
@@ -38,10 +39,13 @@ const InputField: FC<InputFieldProps> = ({
         id={id}
         value={value}
         onChange={onChange}
-        className={`input-field ${className}`}
+        className="input-field"
       />
       {!isScreenSmall && (
-        <label htmlFor={id} className="input-field-label">
+        <label
+          htmlFor={id}
+          className={`input-field-label ${hideLabel ? "hide-label" : ""}`}
+        >
           {label}
         </label>
       )}

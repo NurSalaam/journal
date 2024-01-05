@@ -17,6 +17,9 @@
   margin-right: 2rem;
 }
 
+.input-field-label.hide-label {
+  display: none;
+}
 .input-field {
   background-color: inherit;
   width: 100%;

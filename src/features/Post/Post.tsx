@@ -13,7 +13,8 @@ type PostProps = {
 };
 
 const Post: React.FC<PostProps> = ({ post }) => {
-  // const { state, dispatch } = useContext(ViewingModeContext);
+  const { state: viewModeState, dispatch: viewModeDispatch } =
+    useContext(ViewingModeContext);
   const initialState: PostFormState = {
     title: post.title,
     lead: post.lead,
@@ -29,6 +30,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
         onChange={(e) =>
           dispatch({ type: postFormActionTypes.TITLE, payload: e.target.value })
         }
+        hideLabel={viewModeState.isPreview}
       />
       <InputField
         id="lead"
@@ -37,6 +39,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
         onChange={(e) =>
           dispatch({ type: postFormActionTypes.LEAD, payload: e.target.value })
         }
+        hideLabel={viewModeState.isPreview}
       />
       <InputField
         id="body"
@@ -45,6 +48,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
         onChange={(e) =>
           dispatch({ type: postFormActionTypes.BODY, payload: e.target.value })
         }
+        hideLabel={viewModeState.isPreview}
       />
     </div>
   );

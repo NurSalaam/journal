@@ -34,7 +34,7 @@ const NavBar: FC = () => {
       <div id="post-actions">
         <div className="multi-btn-container">
           {isHome && <button className="btn-primary">Add Post</button>}
-          {isPost && (
+          {isPost && !state.isPreview && (
             <>
               <button onClick={handleToggleDraft}>
                 {state.isDraft ? "Draft" : "Not Draft"}
