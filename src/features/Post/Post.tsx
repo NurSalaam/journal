@@ -54,4 +54,22 @@ const Post: React.FC<PostProps> = ({ post }) => {
   );
 };
 
+// import debounce from 'lodash.debounce';
+
+// const [isSaving, setIsSaving] = useState(false);
+
+// const savePost = debounce(() => {
+//   setIsSaving(true);
+//   // Call your API here to save the post.
+//   // If the post already exists, call the "edit" route.
+//   // If the post is new, call the "add" route.
+//   setIsSaving(false);
+// }, 1000); // Wait for 1 second of inactivity before saving.
+
+// useEffect(() => {
+//   if (!isSaving) {
+//     savePost();
+//   }
+// }, [postState]); // Save whenever postState changes.
+
 export default Post;
